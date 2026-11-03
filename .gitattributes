@@ -1,0 +1,4 @@
+* text=auto eol=lf
+# Frozen fixtures use exact byte hashes (original Windows snapshots include CRLF).
+# Preserve those bytes on both Windows and Linux; do not normalize them in Git.
+fixtures/*.json -text

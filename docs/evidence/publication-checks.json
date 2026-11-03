@@ -1,0 +1,2152 @@
+{
+  "date": "2026-11-03",
+  "source_commit": "5e97c43a5917a21b504fa4120479a096440d7a25",
+  "environment": "Windows, Python 3.12.14, Edge 156.0.4314.58",
+  "backend": {
+    "tests": 380,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "cases": [
+      {
+        "name": "test_real_owner_prompt_argon_salt_profile_and_data",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_owner_bad_input_no_partial_migration[mismatch]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_owner_bad_input_no_partial_migration[short]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_owner_bad_input_no_partial_migration[long]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_owner_bad_input_no_partial_migration[invalid_username]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_real_owner_atomic_fault_rolls_back[after_auth]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_real_owner_atomic_fault_rolls_back[before_commit]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_unusable_owner_fixture_refused",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_cli_no_password_arguments_and_non_tty_rejected",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_login_cookie_db_token_hash_me_no_hash_leak_and_fixation",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_invalid_credentials_uniform_and_no_session_created[wrong]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_invalid_credentials_uniform_and_no_session_created[unknown]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_invalid_credentials_uniform_and_no_session_created[disabled]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_invalid_credentials_uniform_and_no_session_created[malformed]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_invalid_credentials_uniform_and_no_session_created[sql_injection]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_invalid_cookie_401[missing]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_invalid_cookie_401[forged]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_invalid_cookie_401[truncated]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_invalid_cookie_401[duplicate]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_logout_only_current_not_second_or_other_user",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_logout_all_epoch_and_other_user_unchanged",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_change_password_revokes_all_old_sessions_old_password_fails",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_wrong_current_password_no_credential_or_session_changes",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_csrf_denials_preserve_account_sessions[/api/auth/logout-missing]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_csrf_denials_preserve_account_sessions[/api/auth/logout-incorrect]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_csrf_denials_preserve_account_sessions[/api/auth/logout-other_session]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_csrf_denials_preserve_account_sessions[/api/auth/logout-non_ascii]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_csrf_denials_preserve_account_sessions[/api/auth/logout-all-missing]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_csrf_denials_preserve_account_sessions[/api/auth/logout-all-incorrect]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_csrf_denials_preserve_account_sessions[/api/auth/logout-all-other_session]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_csrf_denials_preserve_account_sessions[/api/auth/logout-all-non_ascii]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_csrf_denials_preserve_account_sessions[/api/auth/change-password-missing]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_csrf_denials_preserve_account_sessions[/api/auth/change-password-incorrect]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_csrf_denials_preserve_account_sessions[/api/auth/change-password-other_session]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_csrf_denials_preserve_account_sessions[/api/auth/change-password-non_ascii]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_login_origin_denied[None]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_login_origin_denied[http://evil.example]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_login_origin_denied[http://localhost:8378]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_mutation_wrong_origin_denied[/api/auth/logout]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_mutation_wrong_origin_denied[/api/auth/logout-all]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_mutation_wrong_origin_denied[/api/auth/change-password]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_validation_body_host_and_no_secret_echo",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_no_ui_workspace_business_or_registration_routes[/]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_no_ui_workspace_business_or_registration_routes[/docs]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_no_ui_workspace_business_or_registration_routes[/openapi.json]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_no_ui_workspace_business_or_registration_routes[/api/documents]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_no_ui_workspace_business_or_registration_routes[/api/workspaces]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_no_ui_workspace_business_or_registration_routes[/api/users]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_no_ui_workspace_business_or_registration_routes[/api/auth/register]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_idle_timeout_me_poll_does_not_extend",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_absolute_timeout_even_with_future_idle_deadline",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_epoch_mismatch_and_disabled_account_reject_current_session",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_offline_reset_revoke_and_other_user",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_account_transaction_faults_rollback[login.after_insert]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_account_transaction_faults_rollback[logout.after_revoke]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_account_transaction_faults_rollback[logout_all.after_revoke]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_account_transaction_faults_rollback[password.after_update]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_account_transaction_faults_rollback[password.after_revoke]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_account_transaction_faults_rollback[offline.after_revoke]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_concurrent_revoke_after_verify_blocks_stale_operation[login]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_concurrent_revoke_after_verify_blocks_stale_operation[password]",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_login_rate_account_clear_and_window",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_source_limit_and_bounded_memory",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_https_flags_config_and_remote_origin_forbidden",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_real_loopback_http_restart_sessions_and_revocations",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_final_protection_and_protocol",
+        "class": "tests.b2.test_accounts",
+        "status": "passed"
+      },
+      {
+        "name": "test_real_migration_preserves_every_old_typed_value_and_blob",
+        "class": "tests.b2.test_integration_migration",
+        "status": "passed"
+      },
+      {
+        "name": "test_every_migration_fault_restores_v1_and_exact_legacy_values[after_auth]",
+        "class": "tests.b2.test_integration_migration",
+        "status": "passed"
+      },
+      {
+        "name": "test_every_migration_fault_restores_v1_and_exact_legacy_values[after_copy_documents]",
+        "class": "tests.b2.test_integration_migration",
+        "status": "passed"
+      },
+      {
+        "name": "test_every_migration_fault_restores_v1_and_exact_legacy_values[after_copy_versions]",
+        "class": "tests.b2.test_integration_migration",
+        "status": "passed"
+      },
+      {
+        "name": "test_every_migration_fault_restores_v1_and_exact_legacy_values[after_copy_tasks]",
+        "class": "tests.b2.test_integration_migration",
+        "status": "passed"
+      },
+      {
+        "name": "test_every_migration_fault_restores_v1_and_exact_legacy_values[after_copy_chunks]",
+        "class": "tests.b2.test_integration_migration",
+        "status": "passed"
+      },
+      {
+        "name": "test_every_migration_fault_restores_v1_and_exact_legacy_values[after_copy_idempotency]",
+        "class": "tests.b2.test_integration_migration",
+        "status": "passed"
+      },
+      {
+        "name": "test_every_migration_fault_restores_v1_and_exact_legacy_values[after_drop]",
+        "class": "tests.b2.test_integration_migration",
+        "status": "passed"
+      },
+      {
+        "name": "test_every_migration_fault_restores_v1_and_exact_legacy_values[after_rename]",
+        "class": "tests.b2.test_integration_migration",
+        "status": "passed"
+      },
+      {
+        "name": "test_every_migration_fault_restores_v1_and_exact_legacy_values[after_indexes]",
+        "class": "tests.b2.test_integration_migration",
+        "status": "passed"
+      },
+      {
+        "name": "test_every_migration_fault_restores_v1_and_exact_legacy_values[after_validate]",
+        "class": "tests.b2.test_integration_migration",
+        "status": "passed"
+      },
+      {
+        "name": "test_every_migration_fault_restores_v1_and_exact_legacy_values[after_user_version]",
+        "class": "tests.b2.test_integration_migration",
+        "status": "passed"
+      },
+      {
+        "name": "test_every_migration_fault_restores_v1_and_exact_legacy_values[before_commit]",
+        "class": "tests.b2.test_integration_migration",
+        "status": "passed"
+      },
+      {
+        "name": "test_postcommit_failure_quarantines_and_refuses_authentication",
+        "class": "tests.b2.test_integration_migration",
+        "status": "passed"
+      },
+      {
+        "name": "test_live_entry_refuses_v1_without_modifying_it",
+        "class": "tests.b2.test_integration_migration",
+        "status": "passed"
+      },
+      {
+        "name": "test_offline_empty_initialization_is_exclusive_and_real_owner_required",
+        "class": "tests.b2.test_integration_migration",
+        "status": "passed"
+      },
+      {
+        "name": "test_write_boundary_rejects_originals_aliases_and_wrong_roots[formal]",
+        "class": "tests.b2.test_integration_migration",
+        "status": "passed"
+      },
+      {
+        "name": "test_write_boundary_rejects_originals_aliases_and_wrong_roots[checkout]",
+        "class": "tests.b2.test_integration_migration",
+        "status": "passed"
+      },
+      {
+        "name": "test_write_boundary_rejects_originals_aliases_and_wrong_roots[outside]",
+        "class": "tests.b2.test_integration_migration",
+        "status": "passed"
+      },
+      {
+        "name": "test_write_boundary_rejects_originals_aliases_and_wrong_roots[protected-backup]",
+        "class": "tests.b2.test_integration_migration",
+        "status": "passed"
+      },
+      {
+        "name": "test_write_boundary_rejects_originals_aliases_and_wrong_roots[hardlink]",
+        "class": "tests.b2.test_integration_migration",
+        "status": "passed"
+      },
+      {
+        "name": "test_write_boundary_rejects_originals_aliases_and_wrong_roots[symlink]",
+        "class": "tests.b2.test_integration_migration",
+        "status": "passed"
+      },
+      {
+        "name": "test_unknown_schema_rejected_without_automatic_repair",
+        "class": "tests.b2.test_integration_migration",
+        "status": "passed"
+      },
+      {
+        "name": "test_copy_never_overwrites_a_backup",
+        "class": "tests.b2.test_integration_migration",
+        "status": "passed"
+      },
+      {
+        "name": "test_integrated_entry_openapi_requires_real_single_session",
+        "class": "tests.b2.test_integration_migration",
+        "status": "passed"
+      },
+      {
+        "name": "test_startup_refuses_missing_database_without_creating_one",
+        "class": "tests.b2.test_integration_migration",
+        "status": "passed"
+      },
+      {
+        "name": "test_missing_write_root_fails_closed",
+        "class": "tests.b2.test_integration_migration",
+        "status": "passed"
+      },
+      {
+        "name": "test_cli_creates_second_user_login_membership_and_status_revokes_sessions",
+        "class": "tests.b2.test_review_fixes",
+        "status": "passed"
+      },
+      {
+        "name": "test_cli_duplicate_and_last_owner_denials_preserve_all_records",
+        "class": "tests.b2.test_review_fixes",
+        "status": "passed"
+      },
+      {
+        "name": "test_cli_does_not_recover_queued_tasks",
+        "class": "tests.b2.test_review_fixes",
+        "status": "passed"
+      },
+      {
+        "name": "test_cli_invalid_new_user_preserves_records[short]",
+        "class": "tests.b2.test_review_fixes",
+        "status": "passed"
+      },
+      {
+        "name": "test_cli_invalid_new_user_preserves_records[long]",
+        "class": "tests.b2.test_review_fixes",
+        "status": "passed"
+      },
+      {
+        "name": "test_cli_invalid_new_user_preserves_records[mismatch]",
+        "class": "tests.b2.test_review_fixes",
+        "status": "passed"
+      },
+      {
+        "name": "test_cli_invalid_new_user_preserves_records[invalid-name]",
+        "class": "tests.b2.test_review_fixes",
+        "status": "passed"
+      },
+      {
+        "name": "test_new_user_actual_noninteractive_cli_refuses_secret_input",
+        "class": "tests.b2.test_review_fixes",
+        "status": "passed"
+      },
+      {
+        "name": "test_actual_startup_rejects_missing_or_misbound_marker[missing]",
+        "class": "tests.b2.test_review_fixes",
+        "status": "passed"
+      },
+      {
+        "name": "test_actual_startup_rejects_missing_or_misbound_marker[truncated]",
+        "class": "tests.b2.test_review_fixes",
+        "status": "passed"
+      },
+      {
+        "name": "test_actual_startup_rejects_missing_or_misbound_marker[owner]",
+        "class": "tests.b2.test_review_fixes",
+        "status": "passed"
+      },
+      {
+        "name": "test_actual_startup_rejects_missing_or_misbound_marker[workspace]",
+        "class": "tests.b2.test_review_fixes",
+        "status": "passed"
+      },
+      {
+        "name": "test_actual_startup_rejects_missing_or_misbound_marker[source]",
+        "class": "tests.b2.test_review_fixes",
+        "status": "passed"
+      },
+      {
+        "name": "test_actual_startup_rejects_missing_or_misbound_marker[schema]",
+        "class": "tests.b2.test_review_fixes",
+        "status": "passed"
+      },
+      {
+        "name": "test_actual_startup_rejects_missing_or_misbound_marker[state]",
+        "class": "tests.b2.test_review_fixes",
+        "status": "passed"
+      },
+      {
+        "name": "test_actual_startup_rejects_missing_or_misbound_marker[test-seed]",
+        "class": "tests.b2.test_review_fixes",
+        "status": "passed"
+      },
+      {
+        "name": "test_actual_startup_rejects_missing_or_misbound_marker[missing-field]",
+        "class": "tests.b2.test_review_fixes",
+        "status": "passed"
+      },
+      {
+        "name": "test_actual_startup_rejects_missing_or_misbound_marker[wrong-type]",
+        "class": "tests.b2.test_review_fixes",
+        "status": "passed"
+      },
+      {
+        "name": "test_actual_startup_rejects_missing_or_misbound_marker[quarantine]",
+        "class": "tests.b2.test_review_fixes",
+        "status": "passed"
+      },
+      {
+        "name": "test_same_schema_other_database_marker_is_rejected",
+        "class": "tests.b2.test_review_fixes",
+        "status": "passed"
+      },
+      {
+        "name": "test_normal_restart_accepts_live_changes_and_initial_owner_demotion",
+        "class": "tests.b2.test_review_fixes",
+        "status": "passed"
+      },
+      {
+        "name": "test_actual_write_entry_rejects_junction_before_opening_file[connect]",
+        "class": "tests.b2.test_review_fixes",
+        "status": "passed"
+      },
+      {
+        "name": "test_actual_write_entry_rejects_junction_before_opening_file[backup]",
+        "class": "tests.b2.test_review_fixes",
+        "status": "passed"
+      },
+      {
+        "name": "test_actual_write_entry_rejects_junction_before_opening_file[initialize]",
+        "class": "tests.b2.test_review_fixes",
+        "status": "passed"
+      },
+      {
+        "name": "test_actual_write_entry_rejects_junction_before_opening_file[cli-copy]",
+        "class": "tests.b2.test_review_fixes",
+        "status": "passed"
+      },
+      {
+        "name": "test_default_pytest_collects_without_machine_specific_configuration",
+        "class": "tests.b2.test_review_fixes",
+        "status": "passed"
+      },
+      {
+        "name": "test_container_disposable_initializer_uses_real_owner_and_refuses_overwrite",
+        "class": "tests.b2.test_review_fixes",
+        "status": "passed"
+      },
+      {
+        "name": "test_rollback_guard_ignores_sessions_but_stops_after_business_or_account_changes",
+        "class": "tests.b2.test_review_fixes",
+        "status": "passed"
+      },
+      {
+        "name": "test_task_polling_real_http_races[publish-200]",
+        "class": "tests.b2.test_task_polling",
+        "status": "passed"
+      },
+      {
+        "name": "test_task_polling_real_http_races[revoke-404]",
+        "class": "tests.b2.test_task_polling",
+        "status": "passed"
+      },
+      {
+        "name": "test_task_polling_real_http_races[role-409]",
+        "class": "tests.b2.test_task_polling",
+        "status": "passed"
+      },
+      {
+        "name": "test_task_polling_real_http_races[session-401]",
+        "class": "tests.b2.test_task_polling",
+        "status": "passed"
+      },
+      {
+        "name": "test_task_polling_real_http_races[aba-409]",
+        "class": "tests.b2.test_task_polling",
+        "status": "passed"
+      },
+      {
+        "name": "test_task_polling_real_http_races[foreign-404]",
+        "class": "tests.b2.test_task_polling",
+        "status": "passed"
+      },
+      {
+        "name": "test_task_polling_real_http_races[list_generation-409]",
+        "class": "tests.b2.test_task_polling",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[workspace-owner-alice]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[workspace-editor-bob]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[workspace-viewer-carol]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[summary-owner-alice]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[summary-editor-bob]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[summary-viewer-carol]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[documents-owner-alice]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[documents-editor-bob]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[documents-viewer-carol]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[versions-owner-alice]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[versions-editor-bob]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[versions-viewer-carol]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[tasks-owner-alice]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[tasks-editor-bob]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[tasks-viewer-carol]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[task-owner-alice]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[task-editor-bob]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[task-viewer-carol]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[search-owner-alice]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[search-editor-bob]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[search-viewer-carol]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[passage-owner-alice]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[passage-editor-bob]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[passage-viewer-carol]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[members-owner-alice]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[members-editor-bob]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[members-viewer-carol]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[rename-owner-alice]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[rename-editor-bob]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[rename-viewer-carol]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[add_member-owner-alice]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[add_member-editor-bob]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[add_member-viewer-carol]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[role-owner-alice]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[role-editor-bob]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[role-viewer-carol]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[remove_member-owner-alice]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[remove_member-editor-bob]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[remove_member-viewer-carol]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[import-owner-alice]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[import-editor-bob]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[import-viewer-carol]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[switch-owner-alice]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[switch-editor-bob]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[switch-viewer-carol]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[delete-owner-alice]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[delete-editor-bob]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[delete-viewer-carol]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[retry-owner-alice]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[retry-editor-bob]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[retry-viewer-carol]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[leave-owner-alice]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[leave-editor-bob]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[leave-viewer-carol]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[create-owner-alice]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[create-editor-bob]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_role_matrix[create-viewer-carol]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[workspace-dave]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[workspace-eve]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[workspace-anonymous]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[summary-dave]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[summary-eve]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[summary-anonymous]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[documents-dave]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[documents-eve]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[documents-anonymous]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[versions-dave]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[versions-eve]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[versions-anonymous]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[tasks-dave]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[tasks-eve]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[tasks-anonymous]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[task-dave]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[task-eve]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[task-anonymous]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[search-dave]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[search-eve]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[search-anonymous]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[passage-dave]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[passage-eve]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[passage-anonymous]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[members-dave]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[members-eve]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[members-anonymous]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[rename-dave]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[rename-eve]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[rename-anonymous]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[add_member-dave]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[add_member-eve]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[add_member-anonymous]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[role-dave]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[role-eve]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[role-anonymous]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[remove_member-dave]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[remove_member-eve]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[remove_member-anonymous]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[import-dave]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[import-eve]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[import-anonymous]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[switch-dave]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[switch-eve]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[switch-anonymous]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[delete-dave]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[delete-eve]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[delete-anonymous]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[retry-dave]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[retry-eve]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[retry-anonymous]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[leave-dave]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[leave-eve]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_or_anonymous_denied_all_tenant_routes[leave-anonymous]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_foreign_real_ids_blocked_before_mutation[versions]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_foreign_real_ids_blocked_before_mutation[switch]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_foreign_real_ids_blocked_before_mutation[delete]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_foreign_real_ids_blocked_before_mutation[task]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_foreign_real_ids_blocked_before_mutation[retry]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_foreign_real_ids_blocked_before_mutation[search_doc]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_foreign_real_ids_blocked_before_mutation[search_version]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_foreign_real_ids_blocked_before_mutation[passage]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_foreign_real_ids_blocked_before_mutation[member_role]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_foreign_real_ids_blocked_before_mutation[member_delete]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_same_workspace_wrong_parent_old_contract",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_workspace_list_roles_and_global_owner_not_superuser",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_cache_same_generation_and_retrieval_isolation[auto]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_cache_same_generation_and_retrieval_isolation[bm25]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_cache_same_generation_and_retrieval_isolation[dense]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_cache_same_generation_and_retrieval_isolation[hybrid]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_document_keys_idempotency_separate_workspace_and_conflict_no_changes",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_removed_member_loses_only_one_workspace_and_role_downgrade",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_last_enabled_owner_protected_and_exact_rollback[remove]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_last_enabled_owner_protected_and_exact_rollback[downgrade]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_last_enabled_owner_protected_and_exact_rollback[leave]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_last_enabled_owner_protected_and_exact_rollback[disable]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_disabled_coowner_does_not_count_and_reenable_old_cookie_invalid",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_concurrent_two_owners_cannot_orphan_workspace[self_demote]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_concurrent_two_owners_cannot_orphan_workspace[disable]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_global_disable_checks_all_owned_workspaces",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_new_mutations_csrf_origin_no_side_effects[csrf-rename]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_new_mutations_csrf_origin_no_side_effects[csrf-add_member]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_new_mutations_csrf_origin_no_side_effects[csrf-role]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_new_mutations_csrf_origin_no_side_effects[csrf-remove_member]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_new_mutations_csrf_origin_no_side_effects[csrf-import]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_new_mutations_csrf_origin_no_side_effects[csrf-switch]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_new_mutations_csrf_origin_no_side_effects[csrf-delete]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_new_mutations_csrf_origin_no_side_effects[csrf-retry]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_new_mutations_csrf_origin_no_side_effects[csrf-leave]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_new_mutations_csrf_origin_no_side_effects[csrf-create]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_new_mutations_csrf_origin_no_side_effects[csrf-search]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_new_mutations_csrf_origin_no_side_effects[origin-rename]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_new_mutations_csrf_origin_no_side_effects[origin-add_member]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_new_mutations_csrf_origin_no_side_effects[origin-role]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_new_mutations_csrf_origin_no_side_effects[origin-remove_member]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_new_mutations_csrf_origin_no_side_effects[origin-import]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_new_mutations_csrf_origin_no_side_effects[origin-switch]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_new_mutations_csrf_origin_no_side_effects[origin-delete]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_new_mutations_csrf_origin_no_side_effects[origin-retry]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_new_mutations_csrf_origin_no_side_effects[origin-leave]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_new_mutations_csrf_origin_no_side_effects[origin-create]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_new_mutations_csrf_origin_no_side_effects[origin-search]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_forged_owner_header_or_directory_probe_not_privilege[add_member]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_forged_owner_header_or_directory_probe_not_privilege[role]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_forged_owner_header_or_directory_probe_not_privilege[remove_member]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_inflight_member_or_role_change_rechecked_before_return[search_cold]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_inflight_member_or_role_change_rechecked_before_return[search_hot]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_inflight_member_or_role_change_rechecked_before_return[search_empty]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_inflight_member_or_role_change_rechecked_before_return[passage]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_inflight_member_or_role_change_rechecked_before_return[list]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_inflight_member_or_role_change_rechecked_before_return[owner_members]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_inflight_member_or_role_change_rechecked_before_return[search_error]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_inflight_member_or_role_change_rechecked_before_return[aba]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_inflight_member_or_role_change_rechecked_before_return[search_downgrade]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_inflight_member_or_role_change_rechecked_before_return[session_revoke]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_read_linearization_after_final_revoke_next_request_denied",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_write_and_member_revoke_serialized[revoke_first]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_write_and_member_revoke_serialized[demote_first]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_write_and_member_revoke_serialized[write_first]",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_creator_field_does_not_keep_access_after_owner_handoff",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_worker_tenant_fence_creator_removed_and_deleted_late_publish",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_publish_fault_rollback_retry_and_tenant_generation",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_member_mutation_failure_rolls_back_and_bad_role_422",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_legacy_global_business_routes_closed_and_health_minimal",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_scope_cache_size_bounded_and_deleted_results_gone",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_final_protection_and_emit_matrix",
+        "class": "tests.b2.test_workspace",
+        "status": "passed"
+      },
+      {
+        "name": "test_real_loopback_roles_revocations_owner_handoff_persist_across_restart",
+        "class": "tests.b2.test_workspace_http",
+        "status": "passed"
+      },
+      {
+        "name": "test_nonmember_creates_own_workspace_anonymous_cannot",
+        "class": "tests.b2.test_workspace_supplement",
+        "status": "passed"
+      },
+      {
+        "name": "test_workspace_list_final_snapshot_after_member_removed",
+        "class": "tests.b2.test_workspace_supplement",
+        "status": "passed"
+      },
+      {
+        "name": "test_private_search_session_expires_before_final_no_publication",
+        "class": "tests.b2.test_workspace_supplement",
+        "status": "passed"
+      },
+      {
+        "name": "test_namespaced_import_buffer_and_utf8_size_preserved",
+        "class": "tests.b2.test_workspace_supplement",
+        "status": "passed"
+      },
+      {
+        "name": "test_pre_b1_ranking_scores_warnings_and_errors_are_identical[auto-all_valid_tied_scores]",
+        "class": "tests.test_b1_equivalence",
+        "status": "passed"
+      },
+      {
+        "name": "test_pre_b1_ranking_scores_warnings_and_errors_are_identical[auto-mixed_noncontiguous]",
+        "class": "tests.test_b1_equivalence",
+        "status": "passed"
+      },
+      {
+        "name": "test_pre_b1_ranking_scores_warnings_and_errors_are_identical[auto-all_missing]",
+        "class": "tests.test_b1_equivalence",
+        "status": "passed"
+      },
+      {
+        "name": "test_pre_b1_ranking_scores_warnings_and_errors_are_identical[bm25-all_valid_tied_scores]",
+        "class": "tests.test_b1_equivalence",
+        "status": "passed"
+      },
+      {
+        "name": "test_pre_b1_ranking_scores_warnings_and_errors_are_identical[bm25-mixed_noncontiguous]",
+        "class": "tests.test_b1_equivalence",
+        "status": "passed"
+      },
+      {
+        "name": "test_pre_b1_ranking_scores_warnings_and_errors_are_identical[bm25-all_missing]",
+        "class": "tests.test_b1_equivalence",
+        "status": "passed"
+      },
+      {
+        "name": "test_pre_b1_ranking_scores_warnings_and_errors_are_identical[dense-all_valid_tied_scores]",
+        "class": "tests.test_b1_equivalence",
+        "status": "passed"
+      },
+      {
+        "name": "test_pre_b1_ranking_scores_warnings_and_errors_are_identical[dense-mixed_noncontiguous]",
+        "class": "tests.test_b1_equivalence",
+        "status": "passed"
+      },
+      {
+        "name": "test_pre_b1_ranking_scores_warnings_and_errors_are_identical[dense-all_missing]",
+        "class": "tests.test_b1_equivalence",
+        "status": "passed"
+      },
+      {
+        "name": "test_pre_b1_ranking_scores_warnings_and_errors_are_identical[hybrid-all_valid_tied_scores]",
+        "class": "tests.test_b1_equivalence",
+        "status": "passed"
+      },
+      {
+        "name": "test_pre_b1_ranking_scores_warnings_and_errors_are_identical[hybrid-mixed_noncontiguous]",
+        "class": "tests.test_b1_equivalence",
+        "status": "passed"
+      },
+      {
+        "name": "test_pre_b1_ranking_scores_warnings_and_errors_are_identical[hybrid-all_missing]",
+        "class": "tests.test_b1_equivalence",
+        "status": "passed"
+      },
+      {
+        "name": "test_heading_hierarchy_and_code_block_are_preserved",
+        "class": "tests.test_chunking",
+        "status": "passed"
+      },
+      {
+        "name": "test_html_navigation_and_scripts_do_not_enter_index",
+        "class": "tests.test_chunking",
+        "status": "passed"
+      },
+      {
+        "name": "test_oversized_paragraph_does_not_drop_its_tail",
+        "class": "tests.test_chunking",
+        "status": "passed"
+      },
+      {
+        "name": "test_image_health_and_host_origin_contract[image-default]",
+        "class": "tests.test_container_health",
+        "status": "passed"
+      },
+      {
+        "name": "test_image_health_and_host_origin_contract[compose-default]",
+        "class": "tests.test_container_health",
+        "status": "passed"
+      },
+      {
+        "name": "test_image_health_and_host_origin_contract[acceptance-default]",
+        "class": "tests.test_container_health",
+        "status": "passed"
+      },
+      {
+        "name": "test_image_health_and_host_origin_contract[custom-port]",
+        "class": "tests.test_container_health",
+        "status": "passed"
+      },
+      {
+        "name": "test_image_health_propagates_failure[error0]",
+        "class": "tests.test_container_health",
+        "status": "passed"
+      },
+      {
+        "name": "test_image_health_propagates_failure[error1]",
+        "class": "tests.test_container_health",
+        "status": "passed"
+      },
+      {
+        "name": "test_image_health_propagates_failure[error2]",
+        "class": "tests.test_container_health",
+        "status": "passed"
+      },
+      {
+        "name": "test_image_health_requires_http_200",
+        "class": "tests.test_container_health",
+        "status": "passed"
+      },
+      {
+        "name": "test_image_health_missing_origin_fails_before_network",
+        "class": "tests.test_container_health",
+        "status": "passed"
+      },
+      {
+        "name": "test_import_search_and_source_context",
+        "class": "tests.test_lifecycle",
+        "status": "passed"
+      },
+      {
+        "name": "test_repeated_import_and_concurrent_idempotency",
+        "class": "tests.test_lifecycle",
+        "status": "passed"
+      },
+      {
+        "name": "test_atomic_update_and_historical_filter",
+        "class": "tests.test_lifecycle",
+        "status": "passed"
+      },
+      {
+        "name": "test_publication_transaction_rolls_back_and_retry_works",
+        "class": "tests.test_lifecycle",
+        "status": "passed"
+      },
+      {
+        "name": "test_late_old_worker_cannot_overwrite_new_request",
+        "class": "tests.test_lifecycle",
+        "status": "passed"
+      },
+      {
+        "name": "test_delete_during_build_prevents_late_publication",
+        "class": "tests.test_lifecycle",
+        "status": "passed"
+      },
+      {
+        "name": "test_delete_removes_cached_candidates_and_passages",
+        "class": "tests.test_lifecycle",
+        "status": "passed"
+      },
+      {
+        "name": "test_delete_during_search_invalidates_inflight_snapshot",
+        "class": "tests.test_lifecycle",
+        "status": "passed"
+      },
+      {
+        "name": "test_version_switch_cancels_pending_updates",
+        "class": "tests.test_lifecycle",
+        "status": "passed"
+      },
+      {
+        "name": "test_reopen_persists_index_and_recovers_claimed_task",
+        "class": "tests.test_lifecycle",
+        "status": "passed"
+      },
+      {
+        "name": "test_unindexable_update_preserves_previous_version",
+        "class": "tests.test_lifecycle",
+        "status": "passed"
+      },
+      {
+        "name": "test_invalid_version_not_cross_document_access",
+        "class": "tests.test_lifecycle",
+        "status": "passed"
+      },
+      {
+        "name": "test_low_matching_candidates_not_hidden_by_refusal_gate",
+        "class": "tests.test_lifecycle",
+        "status": "passed"
+      },
+      {
+        "name": "test_models_missing_are_explicit_and_do_not_fake_translation",
+        "class": "tests.test_lifecycle",
+        "status": "passed"
+      },
+      {
+        "name": "test_validation_and_size_boundary",
+        "class": "tests.test_lifecycle",
+        "status": "passed"
+      },
+      {
+        "name": "test_health_and_ui_available",
+        "class": "tests.test_lifecycle",
+        "status": "passed"
+      },
+      {
+        "name": "test_real_http_process_restart_and_inflight_crash_recovery",
+        "class": "tests.test_restart",
+        "status": "passed"
+      },
+      {
+        "name": "test_manual_translation_searches_when_translation_model_is_unavailable[auto]",
+        "class": "tests.test_translation_contract",
+        "status": "passed"
+      },
+      {
+        "name": "test_manual_translation_searches_when_translation_model_is_unavailable[bm25]",
+        "class": "tests.test_translation_contract",
+        "status": "passed"
+      },
+      {
+        "name": "test_missing_null_or_blank_translation_keeps_original_model_error[optional0]",
+        "class": "tests.test_translation_contract",
+        "status": "passed"
+      },
+      {
+        "name": "test_missing_null_or_blank_translation_keeps_original_model_error[optional1]",
+        "class": "tests.test_translation_contract",
+        "status": "passed"
+      },
+      {
+        "name": "test_missing_null_or_blank_translation_keeps_original_model_error[optional2]",
+        "class": "tests.test_translation_contract",
+        "status": "passed"
+      },
+      {
+        "name": "test_manual_translation_does_not_downgrade_explicit_hybrid_without_dense_model",
+        "class": "tests.test_translation_contract",
+        "status": "passed"
+      },
+      {
+        "name": "test_disallowed_override_is_rejected_before_missing_model_errors[retention policy-auto-auto]",
+        "class": "tests.test_translation_contract",
+        "status": "passed"
+      },
+      {
+        "name": "test_disallowed_override_is_rejected_before_missing_model_errors[\\u5907\\u4efd\\u4fdd\\u7559\\u7b56\\u7565-en-bm25]",
+        "class": "tests.test_translation_contract",
+        "status": "passed"
+      },
+      {
+        "name": "test_disallowed_override_is_rejected_before_missing_model_errors[\\u5907\\u4efd\\u4fdd\\u7559\\u7b56\\u7565-zh-dense]",
+        "class": "tests.test_translation_contract",
+        "status": "passed"
+      },
+      {
+        "name": "test_invalid_translation_payload_returns_field_validation_error[over-500-characters]",
+        "class": "tests.test_translation_contract",
+        "status": "passed"
+      },
+      {
+        "name": "test_invalid_translation_payload_returns_field_validation_error[number]",
+        "class": "tests.test_translation_contract",
+        "status": "passed"
+      },
+      {
+        "name": "test_invalid_translation_payload_returns_field_validation_error[array]",
+        "class": "tests.test_translation_contract",
+        "status": "passed"
+      },
+      {
+        "name": "test_valid_translation_length_boundary_and_trimming[exactly-500-characters]",
+        "class": "tests.test_translation_contract",
+        "status": "passed"
+      },
+      {
+        "name": "test_valid_translation_length_boundary_and_trimming[trim-whitespace]",
+        "class": "tests.test_translation_contract",
+        "status": "passed"
+      },
+      {
+        "name": "test_translation_override_does_not_bypass_authentication_or_csrf[session]",
+        "class": "tests.test_translation_contract",
+        "status": "passed"
+      },
+      {
+        "name": "test_translation_override_does_not_bypass_authentication_or_csrf[csrf]",
+        "class": "tests.test_translation_contract",
+        "status": "passed"
+      },
+      {
+        "name": "test_translation_override_cannot_select_a_document_from_another_workspace",
+        "class": "tests.test_translation_contract",
+        "status": "passed"
+      },
+      {
+        "name": "test_auto_keeps_chinese_method_and_skips_machine_translation",
+        "class": "tests.test_translation_override",
+        "status": "passed"
+      },
+      {
+        "name": "test_hybrid_stays_hybrid_and_dense_side_still_uses_original_question",
+        "class": "tests.test_translation_override",
+        "status": "passed"
+      },
+      {
+        "name": "test_translation_rejected_where_no_translation_step_exists[kw0]",
+        "class": "tests.test_translation_override",
+        "status": "passed"
+      },
+      {
+        "name": "test_translation_rejected_where_no_translation_step_exists[kw1]",
+        "class": "tests.test_translation_override",
+        "status": "passed"
+      },
+      {
+        "name": "test_translation_rejected_where_no_translation_step_exists[kw2]",
+        "class": "tests.test_translation_override",
+        "status": "passed"
+      },
+      {
+        "name": "test_blank_translation_means_use_machine_translation",
+        "class": "tests.test_translation_override",
+        "status": "passed"
+      }
+    ]
+  },
+  "browser": {
+    "e2e": {
+      "checks": [
+        {
+          "id": "AUTH01",
+          "status": "passed"
+        },
+        {
+          "id": "AUTH02",
+          "status": "passed"
+        },
+        {
+          "id": "WS01",
+          "status": "passed"
+        },
+        {
+          "id": "WS03",
+          "status": "passed"
+        },
+        {
+          "id": "WRITE01",
+          "status": "passed"
+        },
+        {
+          "id": "READ01",
+          "status": "passed"
+        },
+        {
+          "id": "WRITE02",
+          "status": "passed"
+        },
+        {
+          "id": "MEM01",
+          "status": "passed"
+        },
+        {
+          "id": "MEM02",
+          "status": "passed"
+        },
+        {
+          "id": "MEM03",
+          "status": "passed"
+        },
+        {
+          "id": "SEC01",
+          "status": "passed"
+        },
+        {
+          "id": "SEC02",
+          "status": "passed"
+        },
+        {
+          "id": "WS02",
+          "status": "passed"
+        },
+        {
+          "id": "WS05",
+          "status": "passed"
+        },
+        {
+          "id": "MEM04",
+          "status": "passed"
+        },
+        {
+          "id": "WS04",
+          "status": "passed"
+        },
+        {
+          "id": "MEM05",
+          "status": "passed"
+        },
+        {
+          "id": "MEM06",
+          "status": "passed"
+        },
+        {
+          "id": "UI01",
+          "status": "passed"
+        },
+        {
+          "id": "AUTH03",
+          "status": "passed"
+        }
+      ],
+      "browser": "156.0.4314.58",
+      "unhandled_errors": 0
+    },
+    "supplement": {
+      "checks": [
+        {
+          "id": "RACE-member-controls",
+          "status": "passed"
+        },
+        {
+          "id": "RACE-stale-errors",
+          "status": "passed"
+        },
+        {
+          "id": "WRITE03",
+          "status": "passed"
+        },
+        {
+          "id": "WRITE03-timeout",
+          "status": "passed"
+        },
+        {
+          "id": "UI01-nonjson",
+          "status": "passed"
+        },
+        {
+          "id": "WS02-same-workspace",
+          "status": "passed"
+        },
+        {
+          "id": "TASK01",
+          "status": "passed"
+        },
+        {
+          "id": "SEC03",
+          "status": "passed"
+        },
+        {
+          "id": "AUTH04",
+          "status": "passed"
+        },
+        {
+          "id": "UI02",
+          "status": "passed"
+        },
+        {
+          "id": "UI03",
+          "status": "passed"
+        },
+        {
+          "id": "UI01-extra",
+          "status": "passed"
+        },
+        {
+          "id": "END-browser",
+          "status": "passed"
+        }
+      ],
+      "browser": "156.0.4314.58",
+      "unhandled_errors": 0
+    },
+    "ui-polish": {
+      "checks": [
+        {
+          "id": "UX01-welcome",
+          "status": "passed"
+        },
+        {
+          "id": "UX02-tab-return-keeps-work-and-locks-until-verified",
+          "status": "passed"
+        },
+        {
+          "id": "UX03-refresh-started-before-return-cannot-unlock",
+          "status": "passed"
+        },
+        {
+          "id": "UX04-removed-while-hidden-clears-on-return",
+          "status": "passed"
+        },
+        {
+          "id": "UX05-network-down-on-return-blocks-writes-then-recovers",
+          "status": "passed"
+        },
+        {
+          "id": "LOCK01-late-search-neither-unlocks-nor-renders",
+          "status": "passed"
+        },
+        {
+          "id": "LOCK02-dialog-buttons-follow-the-lock",
+          "status": "passed"
+        },
+        {
+          "id": "LOCK03-keyboard-cannot-reach-locked-areas",
+          "status": "passed"
+        },
+        {
+          "id": "TR01-corrected-translation-keeps-language-and-method",
+          "status": "passed"
+        },
+        {
+          "id": "HL01-highlight-is-text-only-and-matches-backend-terms",
+          "status": "passed"
+        },
+        {
+          "id": "END",
+          "status": "passed"
+        }
+      ],
+      "browser": "156.0.4314.58",
+      "unhandled_errors": 0
+    }
+  },
+  "setup": {
+    "new_external_synthetic_database": true,
+    "existing_directory_rejected_without_changes": true,
+    "source_checkout_directory_rejected": true,
+    "launcher_configuration_check": true,
+    "service_started": false
+  },
+  "startup": {
+    "passed": true,
+    "setup_generated_config_used": true,
+    "loopback_only": true,
+    "worker_on_synthetic_database": true,
+    "checks": [
+      {
+        "language": "en",
+        "method": "hybrid",
+        "original_read": true
+      },
+      {
+        "language": "zh",
+        "method": "bm25",
+        "original_read": true
+      }
+    ],
+    "stopped": true
+  },
+  "prior_export_failure": {
+    "tests_executed": 65,
+    "passed": 64,
+    "failures": 1,
+    "reason": "Export omitted real HTTP test entrypoints; restored original files before full rerun",
+    "original_assertions_preserved": true
+  },
+  "frozen_retrieval_rerun_this_export": false,
+  "docker_or_remote_ci_run": false,
+  "runner_environment_check": {
+    "accounts_passed": 66,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "external_pythonpath_required": false,
+    "overlaps_full_suite": true
+  }
+}

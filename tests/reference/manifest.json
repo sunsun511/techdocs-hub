@@ -1,0 +1,7 @@
+{
+  "baseline_commit": "7fbd6bf158b562d6313e319411555f2cac91996e",
+  "source_path": "app/search.py",
+  "reference_sha256": "bbf6e04e2f0f7dc49eaf3c2a2b8f60cca2e5d0ad8f7b7c8655dd7134cf79bb6d",
+  "model_and_ranking_parameters_unchanged": true,
+  "candidate_sha256": "6a2573a90845563cef19fb260b503f96bb6dd8a8f229e2759fb3f3421a3d76de"
+}

@@ -1,0 +1,20 @@
+services:
+  web:
+    build: .
+    ports:
+      - "127.0.0.1:${TECHDOCS_PORT:-8377}:8377"
+    environment:
+      TECHDOCS_DB_PATH: /data/techdocs.sqlite3
+      TECHDOCS_MODEL_DIR: /app/models
+      TECHDOCS_MODELS: "${TECHDOCS_MODELS:-1}"
+      TECHDOCS_ORIGIN: "http://127.0.0.1:${TECHDOCS_PORT:-8377}"
+    volumes:
+      - documents:/data
+      - type: bind
+        source: ./models
+        target: /app/models
+        read_only: true
+    restart: unless-stopped
+    stop_grace_period: 30s
+volumes:
+  documents:

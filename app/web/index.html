@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>TechDocs · 技术文档工作台</title>
+  <link rel="stylesheet" href="/assets/style.css">
+  <script src="/assets/app.js" defer></script>
+</head>
+<body>
+  <section id="login-view" class="login-view">
+    <form id="login-form" class="login-card">
+      <div class="login-brand"><span class="brand-mark" aria-hidden="true">T</span><span>TechDocs<small>技术文档工作台</small></span></div>
+      <h1>登录</h1><p class="muted">用中文或英文搜索英文技术文档，每条结果都附带原文出处和版本。</p>
+      <label>用户名<input id="username" autocomplete="username" required maxlength="64"></label>
+      <label>密码<input id="password" type="password" autocomplete="current-password" required maxlength="128"></label>
+      <p id="login-error" class="error" role="alert"></p><button id="login-submit" class="primary">登录</button>
+    </form>
+  </section>
+  <div id="app-shell" hidden>
+  <aside class="sidebar">
+    <a class="brand" href="/" aria-label="TechDocs 首页"><span class="brand-mark" aria-hidden="true">T</span><span>TechDocs<small>技术文档工作台</small></span></a>
+    <div class="sidebar-title"><span>文档库</span><span id="document-count">0</span></div>
+    <button id="all-documents" class="scope selected">全部文档</button>
+    <div id="documents" class="document-list"><p class="muted">正在读取文档…</p></div>
+    <button id="import-open" class="import-button">＋ 导入文档</button>
+    <div class="sidebar-bottom"><button id="tasks-open">索引任务 <span id="task-badge"></span></button><span id="connection" class="connection">连接中</span></div>
+  </aside>
+  <main>
+    <header class="topbar">
+      <div class="workspace-controls">
+        <label class="workspace-label">工作区 <select id="workspace-select" aria-label="工作区"></select></label>
+        <span id="current-role" class="tag role-tag"></span>
+      </div>
+      <div class="account-controls">
+        <button id="members-open" hidden>成员管理</button>
+        <details id="user-menu" class="user-menu">
+          <summary aria-label="账号菜单"><span id="current-user"></span></summary>
+          <div class="menu"><button id="logout-all">在所有设备上退出</button></div>
+        </details>
+        <button id="logout">退出</button>
+      </div>
+    </header>
+    <p id="page-error" class="error page-message" role="alert"></p>
+    <p id="no-workspace" class="page-message" hidden>你还没有加入任何工作区，请联系工作区管理员把你的账号加进去。</p>
+    <div id="workspace-body">
+    <section class="search-header">
+      <h1>用中文提问，<br class="mobile-break">在英文文档里找到出处</h1>
+      <p>每条结果都带章节、版本和原文段落，方便你自己核对。</p>
+      <form id="search-form">
+        <div class="searchbox"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="m16 16 5 5"></path></svg><label class="sr-only" for="query">中文或英文搜索内容</label><input id="query" placeholder="例如：Redis 默认的快照文件叫什么？" autocomplete="off" maxlength="500" required><button id="search-submit">搜索</button></div>
+        <div class="search-controls">
+          <div class="scope-bar">
+            <span class="scope-text">搜索范围：<strong id="scope-label">全部文档</strong></span>
+            <label id="version-filter-label" hidden>版本 <select id="version-filter"><option value="">当前版本</option></select></label>
+            <button type="button" id="versions-open" class="link-button" hidden>版本管理</button>
+            <button type="button" id="scope-clear" class="link-button" hidden>搜全部文档</button>
+          </div>
+          <div class="search-options">
+            <label>语言 <select id="language"><option value="auto">自动识别</option><option value="zh">中文</option><option value="en">English</option></select></label>
+            <label>匹配方式 <select id="method"><option value="auto">自动（推荐）</option><option value="bm25">按关键词</option><option value="dense">按意思</option><option value="hybrid">关键词 + 意思</option></select></label>
+          </div>
+        </div>
+      </form>
+    </section>
+    <section class="workspace" aria-label="搜索与原文阅读">
+      <div class="results-panel">
+        <div class="panel-heading"><h2>搜索结果</h2><span id="result-meta">等待搜索</span></div>
+        <div id="search-notices" class="notices" aria-live="polite"></div>
+        <form id="translation" class="translation" hidden>
+          <label for="translation-input">实际用这句英文去搜</label>
+          <div class="translation-row"><input id="translation-input" maxlength="500" autocomplete="off" spellcheck="false"><button id="translation-submit">改好了，重新搜</button></div>
+          <p id="translation-hint" class="translation-hint"></p>
+        </form>
+        <div id="results" aria-live="polite"></div>
+        <div class="empty-state welcome"><h3>从一个具体问题开始</h3><p>中英文都可以。问题里带上文档里会出现的名称、命令或配置项，更容易找到。</p><button type="button" class="example" data-query="Redis 默认的快照文件叫什么？">Redis 默认的快照文件叫什么？</button><button type="button" class="example" data-query="How do I make a parallel dump in PostgreSQL?">How do I make a parallel dump in PostgreSQL?</button><button type="button" class="example" data-query="Docker 的 volume 和 bind mount 有什么区别？">Docker 的 volume 和 bind mount 有什么区别？</button></div>
+      </div>
+      <aside class="reader-panel"><div class="panel-heading"><h2>原文阅读</h2></div><div id="reader"></div><div class="reader-empty"><h3>选择一条搜索结果</h3><p>这里会展开原文和前后段落，帮你判断内容是否适用。</p></div></aside>
+    </section>
+    </div><footer>搜索结果是候选原文，不等于问题的答案。涉及具体环境或版本时，请核对原文的适用条件。</footer>
+  </main>
+  </div>
+  <dialog id="import-dialog"><form id="import-form"><div class="dialog-heading"><h2>导入文档</h2><button type="button" data-close="import-dialog" aria-label="关闭">×</button></div><p class="muted">粘贴正文或选择本地文件。来源链接只用来跳转回原文。</p><label>选择文件<input id="file" type="file" accept=".md,.txt,.html,.htm"></label><div class="two-fields"><label>文档标识<input name="key" required pattern="[a-zA-Z0-9][a-zA-Z0-9._-]*" placeholder="如 redis-persistence" maxlength="120"></label><label>版本标签<input name="version_label" required value="v1" maxlength="80"></label></div><label>标题<input name="title" required maxlength="240" placeholder="如 Redis persistence"></label><div class="two-fields"><label>来源链接<input name="source_url" type="url" placeholder="https://…"></label><label>格式<select name="format"><option value="markdown">Markdown</option><option value="text">纯文本</option><option value="html">HTML</option></select></label></div><label>正文<textarea name="content" rows="10" required placeholder="# 文档标题&#10;&#10;粘贴需要检索的正文…"></textarea></label><p id="import-error" class="error" aria-live="polite"></p><div class="dialog-actions"><button type="button" data-close="import-dialog">取消</button><button type="submit" class="primary" id="import-submit">导入并建立索引</button></div></form></dialog>
+  <dialog id="versions-dialog"><div class="dialog-heading"><h2 id="version-title">版本管理</h2><button data-close="versions-dialog" aria-label="关闭">×</button></div><p class="muted">新版本建好索引后才会替换当前版本。历史版本可以单独查看，也可以切回去当作当前版本。</p><div id="versions-list"></div><p id="version-error" class="error" aria-live="polite"></p><div class="dialog-actions"><button id="add-version">导入新版本</button><button id="delete-document" class="danger">删除文档</button></div></dialog>
+  <dialog id="tasks-dialog"><div class="dialog-heading"><h2>索引任务</h2><button data-close="tasks-dialog" aria-label="关闭">×</button></div><p class="muted">任务状态会一直保留。新版本建索引失败时，旧版本照常可以搜索。</p><div id="tasks-list"></div><p id="tasks-error" class="error" aria-live="polite"></p></dialog>
+  <dialog id="members-dialog" aria-labelledby="members-title"><div class="dialog-heading"><h2 id="members-title">成员管理</h2><button data-close="members-dialog" aria-label="关闭">×</button></div><p class="muted">只能添加已有账号，不会新建账号。工作区至少要保留一位管理员，最后一位管理员不能被移除或降级。</p><div id="members-list"></div><form id="member-form"><label>已有用户名<input id="member-username" required maxlength="64"></label><label>角色<select id="member-role"><option value="viewer">只读</option><option value="editor">可编辑</option><option value="owner">管理员</option></select></label><button id="member-submit" class="primary">添加成员</button></form><p id="member-error" class="error" role="alert"></p></dialog>
+  <div id="toast" role="status" hidden></div>
+</body>
+</html>

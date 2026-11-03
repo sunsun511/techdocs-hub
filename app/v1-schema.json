@@ -1,0 +1,50 @@
+[
+  [
+    "index",
+    "chunks_version",
+    "chunks",
+    "CREATE INDEX chunks_version ON chunks(version_id,ordinal)"
+  ],
+  [
+    "index",
+    "tasks_state",
+    "tasks",
+    "CREATE INDEX tasks_state ON tasks(state,created_at)"
+  ],
+  [
+    "table",
+    "chunks",
+    "chunks",
+    "CREATE TABLE chunks(\n                    id TEXT PRIMARY KEY, document_id TEXT NOT NULL REFERENCES documents(id),\n                    version_id TEXT NOT NULL REFERENCES versions(id), ordinal INTEGER NOT NULL,\n                    heading TEXT NOT NULL, text TEXT NOT NULL, vector BLOB)"
+  ],
+  [
+    "table",
+    "documents",
+    "documents",
+    "CREATE TABLE documents(\n                    id TEXT PRIMARY KEY, key TEXT UNIQUE NOT NULL, deleted INTEGER NOT NULL DEFAULT 0,\n                    desired_revision INTEGER NOT NULL DEFAULT 0, active_version_id TEXT,\n                    created_at TEXT NOT NULL, updated_at TEXT NOT NULL)"
+  ],
+  [
+    "table",
+    "idempotency",
+    "idempotency",
+    "CREATE TABLE idempotency(\n                    key TEXT PRIMARY KEY, request_hash TEXT NOT NULL, task_id TEXT NOT NULL REFERENCES tasks(id))"
+  ],
+  [
+    "table",
+    "meta",
+    "meta",
+    "CREATE TABLE meta(key TEXT PRIMARY KEY, value INTEGER NOT NULL)"
+  ],
+  [
+    "table",
+    "tasks",
+    "tasks",
+    "CREATE TABLE tasks(\n                    id TEXT PRIMARY KEY, document_id TEXT NOT NULL REFERENCES documents(id),\n                    version_id TEXT NOT NULL REFERENCES versions(id), revision INTEGER NOT NULL,\n                    state TEXT NOT NULL, attempts INTEGER NOT NULL DEFAULT 0,\n                    error TEXT, created_at TEXT NOT NULL, updated_at TEXT NOT NULL)"
+  ],
+  [
+    "table",
+    "versions",
+    "versions",
+    "CREATE TABLE versions(\n                    id TEXT PRIMARY KEY, document_id TEXT NOT NULL REFERENCES documents(id),\n                    label TEXT NOT NULL, title TEXT NOT NULL, source_url TEXT NOT NULL,\n                    format TEXT NOT NULL, content TEXT NOT NULL, content_hash TEXT NOT NULL,\n                    revision INTEGER NOT NULL, status TEXT NOT NULL, model_tag TEXT,\n                    chunk_count INTEGER NOT NULL DEFAULT 0, created_at TEXT NOT NULL,\n                    UNIQUE(document_id,label))"
+  ]
+]

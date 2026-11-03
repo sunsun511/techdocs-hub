@@ -1,0 +1,87 @@
+/* Real Edge + isolated backend acceptance. No credential screenshots or storage state. */
+const fs=require('fs'),path=require('path'),assert=require('assert/strict'),{execFileSync}=require('child_process');
+const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
+const root=process.env.UI_PRIVATE, evidence=process.env.UI_EVIDENCE, origin='http://127.0.0.1:8388';
+if(!root||!evidence)throw Error('Explicit isolated private and evidence paths required');
+fs.mkdirSync(evidence,{recursive:false});const credentials=JSON.parse(fs.readFileSync(path.join(root,'credentials.json'),'utf8'));
+const {A,B,users}=credentials;const results=[],errors=[],contexts=[];let browser;
+const save=()=>fs.writeFileSync(path.join(evidence,'results.json'),JSON.stringify({results,unhandled:errors,browser:browser?.version()},null,2));
+async function test(id,fn){try{await fn();results.push({id,status:'passed'});save();console.log(id+' passed');}catch(e){results.push({id,status:'failed',message:e.message.replaceAll(credentials.password,'[REDACTED]')});save();throw e;}}
+async function wait(fn,timeout=20000){const end=Date.now()+timeout;while(Date.now()<end){if(await fn())return;await new Promise(r=>setTimeout(r,150));}throw Error('Condition timeout');}
+async function actor(name){const c=await browser.newContext();contexts.push(c);const p=await c.newPage();p.on('pageerror',e=>errors.push(e.message));p.on('dialog',d=>d.accept());await p.goto(origin);await p.waitForLoadState('networkidle');await p.locator('#username').fill('ui-'+name);await p.locator('#password').fill(credentials.password);await p.locator('#login-submit').click();await p.locator('#app-shell').waitFor({state:'visible'});if(name!=='empty')await wait(()=>p.locator('#current-role').innerText().then(t=>!!t));return {c,p,name};}
+async function req(a,method,url,data,extra={}){const me=await a.c.request.get(origin+'/api/auth/me');const token=me.ok()?(await me.json()).csrf_token:'';for(let attempt=0;attempt<5;attempt++){const r=await a.c.request.fetch(origin+url,{method,headers:{Origin:origin,'Content-Type':'application/json','X-CSRF-Token':token,...extra},...(data===undefined?{}:{data})});if(method==='GET'&&r.status()===409&&(await r.json()).detail==='Workspace data changed; retry request'){console.log('Observed documented read-generation conflict; read again');await new Promise(resolve=>setTimeout(resolve,100));continue;}return r;}throw Error('Read remained in conflict');}
+const scoped=(w,p)=>`/api/workspaces/${w}${p}`;
+function fingerprint(){return JSON.parse(execFileSync((process.env.PYTHON_EXECUTABLE||'python'),['-B','-X','utf8',path.resolve(__dirname,'../../tools/ui_fingerprint.py'),path.join(root,'ui.sqlite3')],{env:{...process.env,TECHDOCS_DATA_ROOT:root},encoding:'utf8'}));}
+async function deny(a,method,url,status,data,headers){const before=fingerprint();const r=await req(a,method,url,data,headers);assert.equal(r.status(),status);assert.deepEqual(fingerprint(),before);}
+async function select(a,ws){await a.p.locator('#workspace-select').selectOption(ws);await wait(async()=>await a.p.locator('#workspace-select').inputValue()===ws && await a.p.locator('#workspace-body').isVisible());}
+async function ready(a,w,t){await wait(async()=>{const r=await req(a,'GET',scoped(w,'/tasks/'+t.id));const s=(await r.json()).state;assert.ok(!['failed','cancelled'].includes(s));return s==='succeeded';},45000);}
+async function importDoc(a,w,key,content,label='v1'){const r=await req(a,'POST',scoped(w,'/documents'),{key,title:key,version_label:label,format:'text',content});assert.equal(r.status(),202);const t=(await r.json()).task;await ready(a,w,t);return t;}
+async function uiImport(a,key,content,label='v1'){
+ await a.p.locator('#import-open').click();const f=a.p.locator('#import-form');await f.locator('[name=key]').fill(key);await f.locator('[name=title]').fill(key);await f.locator('[name=version_label]').fill(label);await f.locator('[name=content]').fill(content);await f.locator('[name=format]').selectOption('text');await a.p.locator('#import-submit').click();await a.p.locator('#import-dialog').waitFor({state:'hidden'});
+ await wait(async()=>{const r=await req(a,'GET',scoped(A,'/documents'));const body=await r.json();if(r.status()===409){assert.equal(body.detail,'Workspace data changed; retry request');return false;}assert.equal(r.status(),200,JSON.stringify(body));return body.documents.some(d=>d.key===key&&d.version_label===label&&d.task_state==='succeeded');},45000);
+ await wait(()=>a.p.locator('.doc-row').filter({hasText:key}).count().then(n=>n>0));
+}
+(async()=>{
+ await wait(async()=>{try{return (await fetch(origin+'/api/health')).ok;}catch{return false;}},60000);
+ browser=await chromium.launch({channel:'msedge',headless:true});
+ let owner,editor,viewer,other,owner2,docA,docB;
+ await test('AUTH01',async()=>{owner=await actor('owner');assert.equal(await owner.p.locator('#password').inputValue(),'');await owner.p.reload();await owner.p.locator('#workspace-body').waitFor({state:'visible'});assert.equal(await owner.p.locator('#current-user').innerText(),'ui-owner');});
+ await test('AUTH02',async()=>{const c=await browser.newContext();contexts.push(c);const p=await c.newPage();await p.goto(origin);await p.locator('#username').fill('ui-editor');await p.locator('#password').fill('wrong-password');await p.locator('#login-submit').click();await wait(()=>p.locator('#login-error').innerText().then(t=>t.includes('Invalid credentials')));assert.equal(await p.locator('#password').inputValue(),'');assert.equal(await p.locator('#app-shell').isVisible(),false);
+  for(let i=0;i<5;i++)await c.request.post(origin+'/api/auth/login',{headers:{Origin:origin},data:{username:'ui-disabled',password:'wrong-password'}});const r=await c.request.post(origin+'/api/auth/login',{headers:{Origin:origin},data:{username:'ui-disabled',password:'wrong-password'}});assert.equal(r.status(),429);await c.close();});
+ editor=await actor('editor');viewer=await actor('viewer');other=await actor('other');owner2=await actor('owner2');
+ await test('WS01',async()=>{await select(editor,B);assert.match(await editor.p.locator('#current-role').innerText(),/只读/);assert.equal(await editor.p.locator('#import-open').isVisible(),false);await select(editor,A);assert.match(await editor.p.locator('#current-role').innerText(),/可编辑/);assert.equal(await editor.p.locator('#import-open').isVisible(),true);});
+ await test('WS03',async()=>{const empty=await actor('empty');await empty.p.locator('#no-workspace').waitFor({state:'visible'});assert.equal(await empty.p.locator('#workspace-select option').count(),0);await empty.c.close();});
+ await test('WRITE01',async()=>{
+  await uiImport(owner,'retention-guide','Retention policy stores backups for seven days. Apples are green.');
+  const d=await req(owner,'GET',scoped(A,'/documents'));docA=(await d.json()).documents.find(x=>x.key==='retention-guide');
+  await uiImport(editor,'editor-guide','Editors can import documentation. Backup retention is seven days.');
+  await uiImport(owner,'retention-guide','Retention policy stores backups for fourteen days. Apples are red.','v2');
+  await owner.p.locator('.doc-row').filter({hasText:'retention-guide'}).click();await owner.p.locator('#versions-open').click();await owner.p.locator('.version-row').filter({hasText:'v1'}).getByRole('button',{name:'设为当前'}).click();await wait(async()=>{const r=await req(owner,'GET',scoped(A,`/documents/${docA.id}/versions`));const j=await r.json();return j.versions.find(v=>v.id===j.document.active_version_id).label==='v1';});await owner.p.locator('[data-close=versions-dialog]').click();
+  docB=await importDoc(owner2,B,'b-only-guide','BONLY unique workspace documentation. Retention is thirty days.');
+ });
+ await test('READ01',async()=>{for(const a of [owner,editor,viewer]){await select(a,A);await a.p.locator('#query').fill('backup retention');await a.p.locator('#search-submit').click();await a.p.locator('.result').first().waitFor();await a.p.locator('.reader-text').first().waitFor();}
+  await owner.p.locator('#query').fill('备份保留策略');await owner.p.locator('#language').selectOption('zh');await owner.p.locator('#search-submit').click();await wait(()=>owner.p.locator('#translation').isVisible());await viewer.p.locator('.doc-row').filter({hasText:'retention-guide'}).click();await viewer.p.locator('#versions-open').click();await viewer.p.locator('#versions-dialog').waitFor({state:'visible'});assert.ok(await viewer.p.locator('.version-row').count()>=2);assert.equal(await viewer.p.locator('#delete-document').isVisible(),false);await viewer.p.locator('[data-close=versions-dialog]').click();await owner.p.screenshot({path:path.join(evidence,'bilingual-reader.png'),fullPage:true});});
+ await test('WRITE02',async()=>{const r=await req(owner,'GET',scoped(A,`/documents/${docA.id}/versions`));const v=(await r.json()).versions[0];for(const [url,method,body] of [[scoped(A,'/documents'),'POST',{key:'denied',title:'Denied',format:'text',version_label:'v1',content:'never'}],[scoped(A,`/documents/${docA.id}/active-version`),'POST',{version_id:v.id}],[scoped(A,`/documents/${docA.id}`),'DELETE',{}]])await deny(viewer,method,url,403,body);});
+ await test('MEM01',async()=>{await owner.p.locator('#members-open').click();await owner.p.locator('#member-username').fill('ui-new');await owner.p.locator('#member-role').selectOption('viewer');await owner.p.locator('#member-submit').click();await owner.p.locator('.member-row').filter({hasText:'ui-new'}).waitFor();const draft=owner.p.locator('.member-row').filter({hasText:'ui-new'}).locator('select');await draft.selectOption('editor');await owner.p.waitForTimeout(4300);assert.equal(await draft.inputValue(),'editor');await draft.selectOption('viewer');});
+ await test('MEM02',async()=>{for(const [name,status] of [['ui-new',409],['missing-user',422],['ui-disabled',422]])await deny(owner,'POST',scoped(A,'/members'),status,{username:name,role:'viewer'});});
+ await test('MEM03',async()=>{for(const a of [editor,viewer]){assert.equal(await a.p.locator('#members-open').isVisible(),false);await deny(a,'GET',scoped(A,'/members'),403);await deny(a,'POST',scoped(A,'/members'),403,{username:'ui-other',role:'viewer'});}});
+ await test('SEC01',async()=>{const r=await req(owner2,'POST',scoped(B,'/search'),{query:'BONLY',method:'bm25',top_k:3});const cid=(await r.json()).results[0].chunk_id;
+  for(const [url,method,body] of [[scoped(A,`/documents/${docB.document_id}/versions`),'GET'],[scoped(A,`/tasks/${docB.id}`),'GET'],[scoped(A,`/passages/${cid}`),'GET'],[scoped(A,`/documents/${docB.document_id}`),'DELETE',{}]])await deny(owner,method,url,404,body);
+  await deny(other,'GET',scoped(A,'/documents'),404);const x=await req(owner,'POST',scoped(A,'/search'),{query:'BONLY',method:'bm25',document_id:docB.document_id});assert.equal(x.status(),404);
+ });
+ await test('SEC02',async()=>{await deny(owner,'GET',scoped(A,'/documents'),400,undefined,{Host:'evil.invalid'});await deny(owner,'POST',scoped(A,'/search'),403,{query:'retention'},{Origin:'http://evil.invalid'});await deny(owner,'POST',scoped(A,'/search'),403,{query:'retention'},{'X-CSRF-Token':'invalid'});});
+ await owner.p.locator('[data-close=members-dialog]').click();
+ await test('WS02',async()=>{
+  await select(editor,A);let release;const delayed=new Promise(r=>release=r);let hit=false;
+  await editor.p.route(`**/api/workspaces/${A}/search`,async route=>{const response=await route.fetch();hit=true;await delayed;await route.fulfill({response}).catch(()=>{});});
+  await editor.p.locator('#query').fill('retention');await editor.p.locator('#search-submit').click();await wait(()=>hit);await select(editor,B);release();await editor.p.waitForTimeout(400);assert.equal(await editor.p.locator('#results .result').count(),0);assert.equal(await editor.p.locator('#reader').innerText(),'');assert.ok(!(await editor.p.locator('#documents').innerText()).includes('retention-guide'));await editor.p.unroute(`**/api/workspaces/${A}/search`);await select(editor,A);
+  async function delayedSwitch(a,suffix,trigger){
+   await select(a,A);let hit=false,release;const gate=new Promise(r=>release=r);const pattern=`**/api/workspaces/${A}${suffix}`;
+   await a.p.route(pattern,async route=>{const response=await route.fetch();hit=true;await gate;await route.fulfill({response}).catch(()=>{});});
+   await trigger();await wait(()=>hit,7000);
+   for(const id of ['tasks-dialog','versions-dialog','members-dialog'])if(await a.p.locator('#'+id).isVisible())await a.p.locator(`[data-close=${id}]`).click();
+   await select(a,B);release();await a.p.waitForTimeout(250);assert.equal(await a.p.locator('#reader').innerText(),'');assert.equal(await a.p.locator('#members-list').innerText(),'');assert.ok(!(await a.p.locator('#documents').innerText()).includes('retention-guide'));assert.equal(await a.p.locator('#versions-list').innerText(),'');assert.equal(await a.p.locator('#version-filter').inputValue(),'');assert.ok(!(await a.p.locator('#tasks-list').innerText()).includes('retention-guide'));assert.ok(!(await a.p.locator('#tasks-list').innerText()).includes('editor-guide'));assert.equal(await a.p.locator('#results').innerText(),'');await a.p.unroute(pattern);
+  }
+  await delayedSwitch(editor,'/documents',async()=>{});
+  await delayedSwitch(editor,'/tasks',async()=>{await editor.p.locator('#tasks-open').click();});
+  await delayedSwitch(editor,`/documents/${docA.id}/versions`,async()=>{await editor.p.locator('.doc-row').filter({hasText:'retention-guide'}).click();});
+  await select(editor,A);await editor.p.locator('#query').fill('retention');await editor.p.locator('#search-submit').click();await editor.p.locator('.result').first().waitFor();
+  // Keep a new result list in A; delay an explicit reader request before switching.
+  {let hit=false,release;const gate=new Promise(r=>release=r);await editor.p.route(`**/api/workspaces/${A}/passages/*`,async route=>{const response=await route.fetch();hit=true;await gate;await route.fulfill({response}).catch(()=>{});});await editor.p.locator('.result').first().click();await wait(()=>hit);await select(editor,B);release();await editor.p.waitForTimeout(250);assert.equal(await editor.p.locator('#reader').innerText(),'');await editor.p.unroute(`**/api/workspaces/${A}/passages/*`);}
+  await delayedSwitch(owner2,'/members',async()=>{await owner2.p.locator('#members-open').click();});await select(editor,A);
+ });
+ await test('WS05',async()=>{await editor.p.locator('#import-open').click();await editor.p.locator('#import-form [name=content]').fill('Unsubmitted');await select(editor,B);assert.equal(await editor.p.locator('#import-dialog').isVisible(),false);assert.equal(await editor.p.locator('#import-form [name=content]').inputValue(),'');await select(editor,A);});
+ await test('MEM04',async()=>{await owner.p.locator('#members-open').click();const row=owner.p.locator('.member-row').filter({hasText:'ui-editor'});await row.locator('select').selectOption('viewer');await row.getByRole('button',{name:'保存角色'}).click();await deny(editor,'POST',scoped(A,'/documents'),403,{key:'denied2',title:'Denied',format:'text',version_label:'v1',content:'never'});await wait(()=>editor.p.locator('#current-role').innerText().then(x=>x.includes('只读')),6000);assert.equal(await editor.p.locator('#import-open').isVisible(),false);});
+ await test('WS04',async()=>{const row=owner.p.locator('.member-row').filter({hasText:'ui-viewer'});await row.getByRole('button',{name:'移除',exact:true}).click();await deny(viewer,'GET',scoped(A,'/documents'),404);await wait(()=>viewer.p.locator('#no-workspace').isVisible(),6000);assert.equal(await viewer.p.locator('#reader').innerText(),'');assert.equal(await viewer.p.locator('#documents').innerText(),'');});
+ await test('MEM05',async()=>{const r=await req(owner,'POST','/api/workspaces',{name:'Owner guard'});const w=(await r.json()).id;await req(owner,'POST',scoped(w,'/members'),{username:'ui-owner2',role:'owner'});
+  const out=await Promise.all([req(owner,'DELETE',scoped(w,`/members/${credentials.owner.owner_id}`),{}),req(owner2,'DELETE',scoped(w,`/members/${users.owner2}`),{})]);assert.deepEqual(out.map(r=>r.status()).sort(),[204,409]);
+ });
+ await test('MEM06',async()=>{await select(owner2,A);await owner2.p.locator('#members-open').click();const row=owner2.p.locator('.member-row').filter({hasText:'ui-owner2'});await row.locator('select').selectOption('viewer');await row.getByRole('button',{name:'保存角色'}).click();await wait(()=>owner2.p.locator('#members-dialog').isVisible().then(x=>!x));assert.equal(await owner2.p.locator('#members-open').isVisible(),false);});
+ await test('UI01',async()=>{assert.equal(errors.length,0);await owner.p.locator('[data-close=members-dialog]').click();});
+ await test('AUTH03',async()=>{const second=await actor('owner');await owner.p.locator('#user-menu summary').click();await owner.p.locator('#logout-all').click();await owner.p.locator('#login-view').waitFor();assert.equal((await second.c.request.get(origin+'/api/auth/me')).status(),401);await second.p.reload();await second.p.locator('#login-view').waitFor();await second.c.close();});
+ save();
+})().catch(e=>{console.error(e.message.replaceAll(credentials.password,'[REDACTED]'));process.exitCode=1;}).finally(async()=>{for(const c of contexts)await c.close().catch(()=>{});if(browser)await browser.close();save();});
+
+
+
+

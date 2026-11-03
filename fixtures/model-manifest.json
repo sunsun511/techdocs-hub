@@ -1,0 +1,121 @@
+{
+  "assets": [
+    {
+      "family": "e5",
+      "filename": "model_quantized.onnx",
+      "remote_path": "onnx/model_quantized.onnx",
+      "repo": "Xenova/multilingual-e5-small",
+      "revision": "761b726dd34fb83930e26aab4e9ac3899aa1fa78",
+      "bytes": 118308185,
+      "sha256": "f80102d3f2a1229f387d3c81909990d8945513e347b0eab049f7de3c6f98c193"
+    },
+    {
+      "family": "e5",
+      "filename": "tokenizer.json",
+      "remote_path": "tokenizer.json",
+      "repo": "Xenova/multilingual-e5-small",
+      "revision": "761b726dd34fb83930e26aab4e9ac3899aa1fa78",
+      "bytes": 17082730,
+      "sha256": "0b44a9d7b51c3c62626640cda0e2c2f70fdacdc25bbbd68038369d14ebdf4c39"
+    },
+    {
+      "family": "e5",
+      "filename": "tokenizer_config.json",
+      "remote_path": "tokenizer_config.json",
+      "repo": "Xenova/multilingual-e5-small",
+      "revision": "761b726dd34fb83930e26aab4e9ac3899aa1fa78",
+      "bytes": 443,
+      "sha256": "a1d6bc8734a6f635dc158508bef000f8e2e5a759c7d92f984b2c86e5ff53425b"
+    },
+    {
+      "family": "e5",
+      "filename": "config.json",
+      "remote_path": "config.json",
+      "repo": "Xenova/multilingual-e5-small",
+      "revision": "761b726dd34fb83930e26aab4e9ac3899aa1fa78",
+      "bytes": 658,
+      "sha256": "cb99455288675345e1a4f411438d5d0adbba5fbd3a67ea4fb03c015433b996c1"
+    },
+    {
+      "family": "translation",
+      "filename": "config.json",
+      "remote_path": "config.json",
+      "repo": "Xenova/opus-mt-zh-en",
+      "revision": "39d480d52a9ea3065a1f117adfe4dbc55de10e6f",
+      "bytes": 1389,
+      "sha256": "293d318fce41dbf04114eac45037bb88a32d7c4ee21011a75e24a8b98ca45ad1"
+    },
+    {
+      "family": "translation",
+      "filename": "generation_config.json",
+      "remote_path": "generation_config.json",
+      "repo": "Xenova/opus-mt-zh-en",
+      "revision": "39d480d52a9ea3065a1f117adfe4dbc55de10e6f",
+      "bytes": 293,
+      "sha256": "8dc29fef0fe82109f94ef3c2e6ea6bded3215d357b226c34cf7b4630726766c9"
+    },
+    {
+      "family": "translation",
+      "filename": "tokenizer.json",
+      "remote_path": "tokenizer.json",
+      "repo": "Xenova/opus-mt-zh-en",
+      "revision": "39d480d52a9ea3065a1f117adfe4dbc55de10e6f",
+      "bytes": 6381339,
+      "sha256": "b306d0301cf280bfd647d7067b5ade2a97b987e6d678df110703c002433643ff"
+    },
+    {
+      "family": "translation",
+      "filename": "tokenizer_config.json",
+      "remote_path": "tokenizer_config.json",
+      "repo": "Xenova/opus-mt-zh-en",
+      "revision": "39d480d52a9ea3065a1f117adfe4dbc55de10e6f",
+      "bytes": 282,
+      "sha256": "08849acc0a539c4749d8665e9d6217735503a97871ccebeea8a762d5fba1acf7"
+    },
+    {
+      "family": "translation",
+      "filename": "vocab.json",
+      "remote_path": "vocab.json",
+      "repo": "Xenova/opus-mt-zh-en",
+      "revision": "39d480d52a9ea3065a1f117adfe4dbc55de10e6f",
+      "bytes": 1747906,
+      "sha256": "08a119a1defd522fa047cb5e3bfe3e89633e96caa38ced0dc9cee7ef1021a011"
+    },
+    {
+      "family": "translation",
+      "filename": "source.spm",
+      "remote_path": "source.spm",
+      "repo": "Xenova/opus-mt-zh-en",
+      "revision": "39d480d52a9ea3065a1f117adfe4dbc55de10e6f",
+      "bytes": 804677,
+      "sha256": "e27a3a1b539f4959ec72ea60e453f49156289f95d4e6000b29332efc45616203"
+    },
+    {
+      "family": "translation",
+      "filename": "target.spm",
+      "remote_path": "target.spm",
+      "repo": "Xenova/opus-mt-zh-en",
+      "revision": "39d480d52a9ea3065a1f117adfe4dbc55de10e6f",
+      "bytes": 806530,
+      "sha256": "6a881f4717cd7265f53fea54fd3dc689c767c05338fac7a4590f3088cb2d7855"
+    },
+    {
+      "family": "translation",
+      "filename": "encoder_model_quantized.onnx",
+      "remote_path": "onnx/encoder_model_quantized.onnx",
+      "repo": "Xenova/opus-mt-zh-en",
+      "revision": "39d480d52a9ea3065a1f117adfe4dbc55de10e6f",
+      "bytes": 52899742,
+      "sha256": "84d5e171b626bc8b6b220d022ac58696e9528c25deeacca62b5cbf4364547a99"
+    },
+    {
+      "family": "translation",
+      "filename": "decoder_model_quantized.onnx",
+      "remote_path": "onnx/decoder_model_quantized.onnx",
+      "repo": "Xenova/opus-mt-zh-en",
+      "revision": "39d480d52a9ea3065a1f117adfe4dbc55de10e6f",
+      "bytes": 59842102,
+      "sha256": "debcc3054b9ff9aaed972bd6e251a459abe1e2f1402da1efa63163dc2f46ef73"
+    }
+  ]
+}
